@@ -75,7 +75,11 @@ function showResult(score, playerChoice, computerChoice) {
     else{
         resultDiv.innerText = 'You Won';
     }
-}
+
+    handsDiv.innerText = `👨‍🦰${playerChoice} vs 🤖${computerChoice}`;
+    playerScoreDiv.innerText = totalScore['playerScore'];
+
+}  
 
 // ** Calculate who won and show it on the screen **
 function onClickRPS(playerChoice) {
@@ -108,12 +112,24 @@ function playGame() {
  
 
   // Add a click listener to the end game button that runs the endGame() function on click
-  
+  const endGameButton = document.getElementById('endGameButton');
+  endGameButton.onclick = () => endGame(totalScore);
+
 }
 
 // ** endGame function clears all the text on the DOM **
 function endGame() {
-  
+    totalScore['playerScore'] = 0;
+    totalScore['computerScore']=0;
+
+    const resultDiv = document.getElementById('result');
+    const handsDiv = document.getElementById('hands');
+    const playerScoreDiv = document.getElementById('player-score');
+
+
+    resultDiv.innerText = "";
+    handsDiv.innerText = "";
+    playerScoreDiv.innerText = "";
 }
 
 playGame()
