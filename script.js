@@ -10,6 +10,12 @@
     👉 Higher order Function (Math.random())
 */
 
+const totalScore = {
+    computerScore:0,
+    playerScore:0
+};
+
+
 // ** getComputerChoice randomly selects between `rock` `paper` `scissors` and returns that string **
 // getComputerChoice() 👉 'Rock'
 // getComputerChoice() 👉 'Scissors'
@@ -57,6 +63,18 @@ function showResult(score, playerChoice, computerChoice) {
   // Hint: on a score of -1
   // You should do result.innerText = 'You Lose!'
   // Don't forget to grab the div with the 'result' id!
+
+    const resultDiv = document.getElementById('result');
+    const handsDiv = document.getElementById('hands');
+    const playerScoreDiv = document.getElementById('player-score');
+    if(score == -1){
+        resultDiv.innerText = 'You lose!';
+    }else if(score == 0){
+        resultDiv.innerText = 'Its a tie'
+    }
+    else{
+        resultDiv.innerText = 'You Won';
+    }
 }
 
 // ** Calculate who won and show it on the screen **
@@ -65,7 +83,10 @@ function onClickRPS(playerChoice) {
   console.log({computerChoice});
   console.log({playerChoice});
   const score = getResult(playerChoice,computerChoice);
+  totalScore['playerScore'] += score;
   console.log({score});
+  console.log(totalScore);
+  showResult(score,playerChoice,computerChoice)
 }
 
 
